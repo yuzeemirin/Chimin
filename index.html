@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Very Important Question 👀</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #70472c;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe9bd 0%,
+            #ffebc9 48%,
+            #ffdfe9 100%
+        );
+}
+
+
+/* =====================================================
+   DECORATION LAYERS
+===================================================== */
+
+.decorLayer {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    overflow: hidden;
+
+    pointer-events: none;
+}
+
+#firstDecor {
+    z-index: 2;
+}
+
+#secondDecor {
+
+    z-index: 30;
+
+    display: none;
+}
+
+
+/* =====================================================
+   FIRST PAGE
+===================================================== */
+
+#questionPage {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 15px;
+
+    transition:
+        opacity .7s ease,
+        transform .7s
+        cubic-bezier(.22,.8,.25,1),
+        filter .7s ease;
+}
+
+
+/* =====================================================
+   GLASS CARD
+===================================================== */
+
+.card {
+
+    position: relative;
+
+    width: min(88vw, 610px);
+
+    padding:
+        27px
+        20px
+        30px;
+
+    text-align: center;
+
+    border-radius: 45px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.60),
+            rgba(255,255,255,.27)
+        );
+
+    border:
+        1px solid
+        rgba(255,255,255,.85);
+
+    backdrop-filter:
+        blur(13px)
+        saturate(135%);
+
+    -webkit-backdrop-filter:
+        blur(13px)
+        saturate(135%);
+
+    box-shadow:
+
+        0 25px 65px
+        rgba(120,80,50,.13),
+
+        inset
+        0 1px 0
+        rgba(255,255,255,.95);
+
+    overflow: visible;
+}
+
+
+.card::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 75%;
+    height: 50%;
+
+    left: -20%;
+    top: -25%;
+
+    background:
+        rgba(255,255,255,.35);
+
+    filter:
+        blur(30px);
+
+    border-radius: 50%;
+
+    transform:
+        rotate(-15deg);
+
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   FIRST GIF
+===================================================== */
+
+#questionGif {
+
+    position: relative;
+
+    z-index: 5;
+
+    width: 145px;
+    height: 145px;
+
+    object-fit: contain;
+
+    display: block;
+
+    margin:
+        0 auto 4px;
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+.title {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin:
+        5px 0 16px;
+
+    color:
+        #a76432;
+
+    font-size:
+        clamp(34px, 8vw, 52px);
+
+    line-height:
+        .98;
+
+    font-weight:
+        bold;
+}
+
+
+/* =====================================================
+   QUESTION
+===================================================== */
+
+.question {
+
+    position: relative;
+
+    z-index: 5;
+
+    margin:
+        0 0 27px;
+
+    font-size:
+        clamp(18px, 4.8vw, 27px);
+}
+
+
+/* =====================================================
+   BUTTON AREA
+===================================================== */
+
+.buttons {
+
+    position:
+        relative;
+
+    z-index:
+        20;
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    gap:
+        15px;
+}
+
+
+/* =====================================================
+   YES BUTTON
+===================================================== */
+
+#yesBtn {
+
+    width:
+        min(76%, 400px);
+
+    padding:
+        16px 20px;
+
+    border:
+        none;
+
+    border-radius:
+        50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dfa556,
+            #d99b4e
+        );
+
+    color:
+        white;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        clamp(17px, 4vw, 21px);
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+
+        0 9px 25px
+        rgba(180,115,45,.20),
+
+        inset
+        0 1px 0
+        rgba(255,255,255,.5);
+
+    transition:
+        transform .2s ease;
+}
+
+#yesBtn:hover {
+    transform: scale(1.035);
+}
+
+#yesBtn:active {
+    transform: scale(.97);
+}
+
+
+/* =====================================================
+   NO BUTTON
+===================================================== */
+
+#noBtn {
+
+    position:
+        fixed;
+
+    z-index:
+        9999;
+
+    width:
+        155px;
+
+    padding:
+        14px 18px;
+
+    border:
+        none;
+
+    border-radius:
+        50px;
+
+    background:
+        rgba(255,248,239,.95);
+
+    color:
+        #70472c;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size:
+        20px;
+
+    font-weight:
+        bold;
+
+    cursor:
+        pointer;
+
+    box-shadow:
+
+        0 10px 28px
+        rgba(100,65,40,.13),
+
+        inset
+        0 1px 0
+        rgba(255,255,255,.95);
+
+    transition:
+
+        left .55s
+        cubic-bezier(
+            .22,
+            .75,
+            .25,
+            1
+        ),
+
+        top .55s
+        cubic-bezier(
+            .22,
+            .75,
+            .25,
+            1
+        ),
+
+        transform .15s ease;
+}
+
+
+/* =====================================================
+   SECOND PAGE
+===================================================== */
+
+#successPage {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    z-index:
+        20;
+
+    display:
+        none;
+
+    width:
+        100vw;
+
+    height:
+        100vh;
+
+    overflow:
+        hidden;
+
+    text-align:
+        center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ffe9bd 0%,
+            #ffebc9 48%,
+            #ffdfe9 100%
+        );
+
+    opacity:
+        0;
+
+    transform:
+        scale(1.06);
+}
+
+
+/* =====================================================
+   SECOND PAGE OPENING
+===================================================== */
+
+#successPage.show {
+
+    animation:
+        successScene .9s
+        cubic-bezier(
+            .16,
+            .75,
+            .2,
+            1
+        )
+        forwards;
+}
+
+
+@keyframes successScene {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            scale(1.06);
+    }
+
+    45% {
+
+        opacity: 1;
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   SECOND PAGE CONTENT
+===================================================== */
+
+.successContent {
+
+    position:
+        relative;
+
+    z-index:
+        50;
+
+    min-height:
+        100vh;
+
+    width:
+        100%;
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    align-items:
+        center;
+
+    padding:
+        25px 15px;
+}
+
+
+/* =====================================================
+   SECOND GIF
+===================================================== */
+
+#successGif {
+
+    width:
+        205px;
+
+    height:
+        205px;
+
+    object-fit:
+        contain;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(35px)
+        scale(.8);
+}
+
+
+#successPage.show #successGif {
+
+    animation:
+        cuteGifEnter .85s
+        .18s
+        cubic-bezier(
+            .16,
+            .8,
+            .25,
+            1
+        )
+        forwards;
+}
+
+
+@keyframes cuteGifEnter {
+
+    0% {
+
+        opacity: 0;
+
+        transform:
+            translateY(35px)
+            scale(.8)
+            rotate(-5deg);
+    }
+
+    70% {
+
+        transform:
+            translateY(-5px)
+            scale(1.03)
+            rotate(2deg);
+    }
+
+    100% {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1)
+            rotate(0);
+    }
+}
+
+
+/* =====================================================
+   SECOND PAGE TITLE
+===================================================== */
+
+.successTitle {
+
+    margin:
+        4px 0 18px;
+
+    color:
+        #a76432;
+
+    font-size:
+        clamp(43px, 10vw, 72px);
+
+    line-height:
+        1;
+
+    opacity:
+        0;
+
+    transform:
+        translateY(25px);
+}
+
+
+#successPage.show .successTitle {
+
+    animation:
+        textEnter .7s
+        .42s
+        ease
+        forwards;
+}
+
+
+/* =====================================================
+   SECOND PAGE TEXT
+===================================================== */
+
+.successText {
+
+    margin:
+        8px 0;
+
+    color:
+        #70472c;
+
+    font-size:
+        clamp(20px, 5vw, 31px);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+}
+
+
+#successPage.show .successText {
+
+    animation:
+        textEnter .7s
+        .56s
+        ease
+        forwards;
+}
+
+
+.permanent {
+
+    margin-top:
+        32px;
+
+    color:
+        #70472c;
+
+    font-size:
+        clamp(19px, 4.7vw, 28px);
+
+    opacity:
+        0;
+
+    transform:
+        translateY(20px);
+}
+
+
+#successPage.show .permanent {
+
+    animation:
+        textEnter .7s
+        .7s
+        ease
+        forwards;
+}
+
+
+@keyframes textEnter {
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =====================================================
+   FIRST PAGE FLOWERS
+===================================================== */
+
+.firstFlower {
+
+    position:
+        absolute;
+
+    top:
+        -70px;
+
+    will-change:
+        transform;
+
+    animation:
+        firstFall linear forwards;
+}
+
+
+@keyframes firstFall {
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                -80px,
+                0
+            )
+            rotate(0deg)
+            scale(.7);
+
+        opacity:
+            0;
+    }
+
+    8% {
+        opacity: 1;
+    }
+
+    30% {
+
+        transform:
+            translate3d(
+                35px,
+                30vh,
+                0
+            )
+            rotate(90deg)
+            scale(1);
+    }
+
+    60% {
+
+        transform:
+            translate3d(
+                -30px,
+                65vh,
+                0
+            )
+            rotate(210deg)
+            scale(.9);
+    }
+
+    100% {
+
+        transform:
+            translate3d(
+                25px,
+                115vh,
+                0
+            )
+            rotate(360deg)
+            scale(.75);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =====================================================
+   SECOND PAGE FLOWERS
+===================================================== */
+
+.secondFlower {
+
+    position:
+        absolute;
+
+    left:
+        50%;
+
+    top:
+        50%;
+
+    will-change:
+        transform,
+        opacity;
+
+    animation:
+        secondFloat linear forwards;
+}
+
+
+@keyframes secondFloat {
+
+    0% {
+
+        transform:
+            translate3d(
+                0,
+                30px,
+                0
+            )
+            rotate(0deg)
+            scale(.4);
+
+        opacity:
+            0;
+    }
+
+    10% {
+        opacity: .95;
+    }
+
+    25% {
+
+        transform:
+            translate3d(
+                var(--x1),
+                var(--y1),
+                0
+            )
+            rotate(80deg)
+            scale(1);
+    }
+
+    50% {
+
+        transform:
+            translate3d(
+                var(--x2),
+                var(--y2),
+                0
+            )
+            rotate(180deg)
+            scale(.9);
+    }
+
+    75% {
+
+        transform:
+            translate3d(
+                var(--x3),
+                var(--y3),
+                0
+            )
+            rotate(280deg)
+            scale(1.05);
+    }
+
+    100% {
+
+        transform:
+            translate3d(
+                var(--x4),
+                var(--y4),
+                0
+            )
+            rotate(390deg)
+            scale(.65);
+
+        opacity:
+            0;
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .card {
+
+        width:
+            88vw;
+
+        padding:
+            22px
+            15px
+            27px;
+
+        border-radius:
+            40px;
+    }
+
+    #questionGif {
+
+        width:
+            135px;
+
+        height:
+            135px;
+    }
+
+    .title {
+
+        font-size:
+            clamp(
+                31px,
+                8vw,
+                45px
+            );
+    }
+
+    .question {
+        font-size: 19px;
+    }
+
+    #yesBtn {
+
+        width:
+            78%;
+
+        padding:
+            14px 15px;
+    }
+
+    #noBtn {
+
+        width:
+            150px;
+
+        font-size:
+            19px;
+
+        padding:
+            13px 15px;
+    }
+
+    #successGif {
+
+        width:
+            195px;
+
+        height:
+            195px;
+    }
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FIRST PAGE DECORATION
+===================================================== -->
+
+<div
+    id="firstDecor"
+    class="decorLayer">
+</div>
+
+
+<!-- =====================================================
+     SECOND PAGE DECORATION
+===================================================== -->
+
+<div
+    id="secondDecor"
+    class="decorLayer">
+</div>
+
+
+<!-- =====================================================
+     FIRST PAGE
+===================================================== -->
+
+<section id="questionPage">
+
+    <div class="card">
+
+        <img
+            id="questionGif"
+            src="HyperRabbit _ Very Good !!! (1).gif"
+            alt="Cute animation"
+        >
+
+        <h1 class="title">
+
+            VERY IMPORTANT<br>
+            QUESTION 👀
+
+        </h1>
+
+        <p class="question">
+
+            Are you secretly a potato? 👀🥔
+
+        </p>
+
+        <div class="buttons">
+
+            <button
+                id="yesBtn"
+                onclick="acceptYes()"
+            >
+
+                YES... you caught me 😭🥔
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     NO BUTTON
+===================================================== -->
+
+<button id="noBtn">
+
+    NOOO 😂
+
+</button>
+
+
+<!-- =====================================================
+     SECOND PAGE
+===================================================== -->
+
+<section id="successPage">
+
+    <div class="successContent">
+
+        <img
+            id="successGif"
+            src="Good Job Good GIF - Good Job Good Good Girl - Discover & Share GIFs.gif"
+            alt="Good job animation"
+        >
+
+        <h1 class="successTitle">
+
+            I KNEW IT!!! 😂
+
+        </h1>
+
+        <p class="successText">
+
+            YOU'RE A POTATO! 🥔❤️
+
+        </p>
+
+        <p class="successText">
+
+            Welcome to the
+            <b>Potato Club</b> 😂
+
+        </p>
+
+        <p class="permanent">
+
+            🥔✨ Membership:
+            <b>PERMANENT</b>
+            ✨🥔
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="music"
+    preload="auto"
+    src="Tamasha_-_Matargashti_mp3_150153117.mp3">
+</audio>
+
+
+<script>
+
+/* =====================================================
+   GET ELEMENTS
+===================================================== */
+
+const noBtn =
+    document.getElementById(
+        "noBtn"
+    );
+
+const questionPage =
+    document.getElementById(
+        "questionPage"
+    );
+
+const successPage =
+    document.getElementById(
+        "successPage"
+    );
+
+const firstDecor =
+    document.getElementById(
+        "firstDecor"
+    );
+
+const secondDecor =
+    document.getElementById(
+        "secondDecor"
+    );
+
+const music =
+    document.getElementById(
+        "music"
+    );
+
+
+/* =====================================================
+   PAGE 1 DECORATIONS
+===================================================== */
+
+const firstObjects = [
+
+    "🌸",
+    "🌸",
+    "🌸",
+    "🌸",
+
+    "🌷",
+    "🌷",
+    "🌷",
+
+    "🌺",
+    "🌺",
+
+    "🌼",
+    "🌼",
+
+    "🌻",
+    "🌹",
+    "🪻",
+
+    "💗",
+    "💗",
+    "💖",
+    "💖",
+    "💕",
+    "💕",
+    "💓",
+    "💞",
+    "💘",
+    "❤️",
+
+    "✨",
+    "✨",
+    "⭐",
+    "🌟",
+    "🦋",
+    "🦋",
+    "🍃",
+    "🌿"
+];
+
+
+/* =====================================================
+   CREATE FIRST FLOWER
+===================================================== */
+
+function createFirstFlower() {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+    element.className =
+        "firstFlower";
+
+    element.textContent =
+        firstObjects[
+            Math.floor(
+                Math.random() *
+                firstObjects.length
+            )
+        ];
+
+    element.style.left =
+        Math.random() *
+        100 +
+        "vw";
+
+    element.style.fontSize =
+        (
+            16 +
+            Math.random() * 23
+        ) +
+        "px";
+
+    element.style.animationDuration =
+        (
+            6 +
+            Math.random() * 7
+        ) +
+        "s";
+
+    firstDecor.appendChild(
+        element
+    );
+
+    setTimeout(
+        function() {
+
+            element.remove();
+
+        },
+        15000
+    );
+}
+
+
+/* =====================================================
+   INITIAL FLOWERS
+===================================================== */
+
+for (
+    let i = 0;
+    i < 110;
+    i++
+) {
+
+    setTimeout(
+        createFirstFlower,
+        i * 65
+    );
+}
+
+
+/* =====================================================
+   CONTINUOUS FLOWERS
+===================================================== */
+
+const firstTimer =
+    setInterval(
+        createFirstFlower,
+        175
+    );
+
+
+/* =====================================================
+   RANDOM NO BUTTON
+===================================================== */
+
+function moveNoRandomly() {
+
+    const buttonWidth =
+        noBtn.offsetWidth;
+
+    const buttonHeight =
+        noBtn.offsetHeight;
+
+    const padding =
+        18;
+
+    const maxX =
+        window.innerWidth -
+        buttonWidth -
+        padding;
+
+    const maxY =
+        window.innerHeight -
+        buttonHeight -
+        padding;
+
+    const randomX =
+        padding +
+        Math.random() *
+        Math.max(
+            0,
+            maxX - padding
+        );
+
+    const randomY =
+        padding +
+        Math.random() *
+        Math.max(
+            0,
+            maxY - padding
+        );
+
+    noBtn.style.left =
+        randomX +
+        "px";
+
+    noBtn.style.top =
+        randomY +
+        "px";
+}
+
+
+/* =====================================================
+   INITIAL NO POSITION
+===================================================== */
+
+function placeNoInitially() {
+
+    const width =
+        noBtn.offsetWidth;
+
+    const height =
+        noBtn.offsetHeight;
+
+    const padding =
+        18;
+
+    let x =
+        (
+            window.innerWidth -
+            width
+        ) / 2;
+
+    let y =
+        window.innerHeight *
+        .70;
+
+    x =
+        Math.max(
+            padding,
+            Math.min(
+                x,
+                window.innerWidth -
+                width -
+                padding
+            )
+        );
+
+    y =
+        Math.max(
+            padding,
+            Math.min(
+                y,
+                window.innerHeight -
+                height -
+                padding
+            )
+        );
+
+    noBtn.style.left =
+        x + "px";
+
+    noBtn.style.top =
+        y + "px";
+}
+
+
+requestAnimationFrame(
+    placeNoInitially
+);
+
+
+/* =====================================================
+   DESKTOP NO BUTTON
+===================================================== */
+
+noBtn.addEventListener(
+    "mouseenter",
+    function() {
+
+        moveNoRandomly();
+
+    }
+);
+
+
+/* =====================================================
+   MOBILE NO BUTTON
+===================================================== */
+
+noBtn.addEventListener(
+    "touchstart",
+    function(event) {
+
+        event.preventDefault();
+
+        moveNoRandomly();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =====================================================
+   NO BUTTON CLICK
+===================================================== */
+
+noBtn.addEventListener(
+    "click",
+    function(event) {
+
+        event.preventDefault();
+
+        moveNoRandomly();
+
+    }
+);
+
+
+/* =====================================================
+   RESIZE
+===================================================== */
+
+window.addEventListener(
+    "resize",
+    function() {
+
+        const width =
+            noBtn.offsetWidth;
+
+        const height =
+            noBtn.offsetHeight;
+
+        const padding =
+            18;
+
+        let x =
+            parseFloat(
+                noBtn.style.left
+            );
+
+        let y =
+            parseFloat(
+                noBtn.style.top
+            );
+
+        if (
+            Number.isNaN(x)
+        ) {
+            x = padding;
+        }
+
+        if (
+            Number.isNaN(y)
+        ) {
+            y = padding;
+        }
+
+        x =
+            Math.max(
+                padding,
+                Math.min(
+                    x,
+                    window.innerWidth -
+                    width -
+                    padding
+                )
+            );
+
+        y =
+            Math.max(
+                padding,
+                Math.min(
+                    y,
+                    window.innerHeight -
+                    height -
+                    padding
+                )
+            );
+
+        noBtn.style.left =
+            x + "px";
+
+        noBtn.style.top =
+            y + "px";
+
+    }
+);
+
+
+/* =====================================================
+   SECOND PAGE OBJECTS
+===================================================== */
+
+const secondObjects = [
+
+    "🌸",
+    "🌸",
+    "🌷",
+    "🌺",
+    "🌼",
+
+    "💗",
+    "💖",
+    "💕",
+    "💓",
+    "💞",
+
+    "✨",
+    "✨",
+
+    "🦋"
+];
+
+
+/* =====================================================
+   SECOND PAGE FLOWERS
+===================================================== */
+
+function createSecondFlower() {
+
+    const element =
+        document.createElement(
+            "div"
+        );
+
+    element.className =
+        "secondFlower";
+
+    element.textContent =
+        secondObjects[
+            Math.floor(
+                Math.random() *
+                secondObjects.length
+            )
+        ];
+
+    element.style.left =
+        (
+            15 +
+            Math.random() * 70
+        ) +
+        "%";
+
+    element.style.top =
+        (
+            25 +
+            Math.random() * 50
+        ) +
+        "%";
+
+
+    element.style.setProperty(
+        "--x1",
+        (
+            Math.random() * 70 -
+            35
+        ) +
+        "vw"
+    );
+
+    element.style.setProperty(
+        "--y1",
+        (
+            Math.random() * 50 -
+            25
+        ) +
+        "vh"
+    );
+
+    element.style.setProperty(
+        "--x2",
+        (
+            Math.random() * 100 -
+            50
+        ) +
+        "vw"
+    );
+
+    element.style.setProperty(
+        "--y2",
+        (
+            Math.random() * 80 -
+            40
+        ) +
+        "vh"
+    );
+
+    element.style.setProperty(
+        "--x3",
+        (
+            Math.random() * 130 -
+            65
+        ) +
+        "vw"
+    );
+
+    element.style.setProperty(
+        "--y3",
+        (
+            Math.random() * 100 -
+            50
+        ) +
+        "vh"
+    );
+
+    element.style.setProperty(
+        "--x4",
+        (
+            Math.random() * 180 -
+            90
+        ) +
+        "vw"
+    );
+
+    element.style.setProperty(
+        "--y4",
+        (
+            Math.random() * 120 -
+            60
+        ) +
+        "vh"
+    );
+
+    element.style.fontSize =
+        (
+            18 +
+            Math.random() * 25
+        ) +
+        "px";
+
+    element.style.animationDuration =
+        (
+            5 +
+            Math.random() * 7
+        ) +
+        "s";
+
+    secondDecor.appendChild(
+        element
+    );
+
+    setTimeout(
+        function() {
+
+            element.remove();
+
+        },
+        15000
+    );
+}
+
+
+/* =====================================================
+   START SECOND DECORATIONS
+===================================================== */
+
+function startSecondDecorations() {
+
+    clearInterval(
+        firstTimer
+    );
+
+    firstDecor.innerHTML =
+        "";
+
+    secondDecor.style.display =
+        "block";
+
+
+    for (
+        let i = 0;
+        i < 160;
+        i++
+    ) {
+
+        setTimeout(
+            createSecondFlower,
+            i * 30
+        );
+    }
+
+
+    setInterval(
+        createSecondFlower,
+        140
+    );
+}
+
+
+/* =====================================================
+   YES / ACCEPT
+===================================================== */
+
+function acceptYes() {
+
+    /*
+     * IMPORTANT:
+     *
+     * This function is called directly
+     * by the YES button.
+     *
+     * Therefore the browser recognizes
+     * this as a user interaction and
+     * allows the music to start.
+     */
+
+
+    /* Start exactly from 0 seconds */
+
+    music.pause();
+
+    music.currentTime =
+        0;
+
+    music.volume =
+        1.0;
+
+
+    /*
+     * Play immediately.
+     */
+
+    music.play().catch(
+        function(error) {
+
+            console.log(
+                "Audio playback error:",
+                error
+            );
+
+        }
+    );
+
+
+    /* ---------------------------------
+       FIRST PAGE EXIT
+    --------------------------------- */
+
+    questionPage.style.opacity =
+        "0";
+
+    questionPage.style.transform =
+        "scale(.94) translateY(-15px)";
+
+    questionPage.style.filter =
+        "blur(5px)";
+
+
+    /* Hide NO */
+
+    noBtn.style.opacity =
+        "0";
+
+    noBtn.style.pointerEvents =
+        "none";
+
+
+    /* ---------------------------------
+       OPEN SECOND PAGE
+    --------------------------------- */
+
+    setTimeout(
+        function() {
+
+            questionPage.style.display =
+                "none";
+
+            noBtn.style.display =
+                "none";
+
+
+            successPage.style.display =
+                "block";
+
+
+            requestAnimationFrame(
+                function() {
+
+                    successPage.classList.add(
+                        "show"
+                    );
+
+                }
+            );
+
+
+            startSecondDecorations();
+
+        },
+        650
+    );
+}
+
+
+/* =====================================================
+   STOP MUSIC WHEN LEAVING WEBSITE
+===================================================== */
+
+function stopMusic() {
+
+    music.pause();
+
+    music.currentTime =
+        0;
+}
+
+
+/*
+   Browser/tab closed,
+   page changed,
+   website left.
+*/
+
+window.addEventListener(
+    "pagehide",
+    stopMusic
+);
+
+window.addEventListener(
+    "beforeunload",
+    stopMusic
+);
+
+</script>
+
+</body>
+
+</html>
